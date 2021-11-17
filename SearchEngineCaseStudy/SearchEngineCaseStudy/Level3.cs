@@ -8,7 +8,7 @@ using System.IO;
 
 namespace SearchEngineCaseStudy
 {
-    class Level3
+    public class Level3
     {
         public static int found = 0;
         public static void ParallelSearch(DirectoryInfo DInfo,string filename)
@@ -34,10 +34,8 @@ namespace SearchEngineCaseStudy
                     {
                         
                         Console.WriteLine(file.DirectoryName+" Parallel");
-                        if (found == 1)
-                        {
-
-                        }
+                        found = 1;
+                       
                         return;
                     }
                 });
@@ -59,6 +57,8 @@ namespace SearchEngineCaseStudy
                     ParallelSearch(directory, filename);
                 });
             }
+          
+            
         }
 
         public static bool SearchFile(FileInfo file, string filename)
@@ -73,6 +73,8 @@ namespace SearchEngineCaseStudy
             else
                 return false;
         }
+
+        
 	
 
 	

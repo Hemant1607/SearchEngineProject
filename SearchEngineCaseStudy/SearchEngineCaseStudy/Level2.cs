@@ -32,6 +32,7 @@ namespace SearchEngineCaseStudy
                     if (item.Name == filename)
                     {
                         Console.WriteLine(item.DirectoryName);
+                        WriteFile(filename, item.DirectoryName);
                         return true;
                     }
                 }
@@ -69,6 +70,13 @@ namespace SearchEngineCaseStudy
 
             }
             return false;
+        }
+
+        public static void WriteFile(string filename, string directory)
+        {
+            StreamWriter sw = new StreamWriter(@"C:\training\Skill Assure Training\SearchEngine\SearchEngineProject\SearchEngineCaseStudy\History.txt", true);
+            sw.WriteLine(filename + ", " + directory);
+            sw.Close();
         }
     }
 }

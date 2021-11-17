@@ -7,11 +7,11 @@ using System.IO;
 
 namespace SearchEngineCaseStudy
 {
-    class Level1
+    public class Level1
     {
       public static DriveInfo[] list = DriveInfo.GetDrives();
         
-        public static void SearchActiveInactiveDrives()
+        public static bool SearchActiveInactiveDrives()
         {
           
             foreach (DriveInfo d in list)
@@ -28,9 +28,10 @@ namespace SearchEngineCaseStudy
                 }
 
             }
+            return true;
 
         }
-        public static void DisplayAllDrives()
+        public static bool DisplayAllDrives()
         {
             Console.WriteLine("List of Drives: ");
            
@@ -41,7 +42,7 @@ namespace SearchEngineCaseStudy
                 Console.WriteLine(d.Name);
 
             }
-            
+            return true;
         }
     }
 }

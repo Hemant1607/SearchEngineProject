@@ -20,15 +20,20 @@ namespace SearchEngineCaseStudy
             watch.Start();
             Console.WriteLine("Enter the file to be searched: ");
             string filename = Console.ReadLine();
+
+            //Level4
+            //Level4.CheckHistory(filename);
+
             DriveInfo[] drives = DriveInfo.GetDrives();
             foreach (var item in drives)
             {
                 DirectoryInfo directoryInfo = item.RootDirectory;
                 //Console.WriteLine(directoryInfo);
-                Thread level2 = new Thread(() => Level2.SearchFile(directoryInfo, filename));
-                level2.Start();
+                //Thread level2 = new Thread(() => Level2.SearchFile(directoryInfo, filename));
+                //level2.Start();
                 Thread level3 = new Thread(() => Level3.ParallelSearch(directoryInfo, filename));
                 level3.Start();
+                level3.Join();
                 //Level3.ParallelSearch(directoryInfo, filename);
                 
                 //bool IsFound= Level2.SearchFile(directoryInfo, filename);
@@ -40,6 +45,9 @@ namespace SearchEngineCaseStudy
                 //    Console.WriteLine("File is not found");
 
             }
+            
+            if (Level3.found == 0)
+                Console.WriteLine("File not found");
             watch.Stop();
 
             Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
